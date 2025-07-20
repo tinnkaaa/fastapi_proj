@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Видалення книги{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <h1 class="mb-4 text-center">Видалити книгу</h1>
+
+            <form method="post" action="/books/delete" class="input-group mb-4">
+                <input type="text" name="name" class="form-control" placeholder="Введіть назву книги" required>
+                <button type="submit" class="btn btn-danger">Видалити</button>
+            </form>
+
+            {% if success %}
+                <div class="alert alert-success text-center" role="alert">
+                    {{ success }}
+                </div>
+            {% elif error %}
+                <div class="alert alert-danger text-center" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

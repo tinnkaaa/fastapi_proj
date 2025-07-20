@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Пошук книг за автором{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <h1 class="mb-4 text-center">Знайти книги автора</h1>
+
+            <form method="get" action="/books/by_author" class="input-group mb-4">
+                <input type="number" name="author_id" class="form-control" placeholder="Введіть ID автора" value="{{ author_id if author_id else '' }}" required>
+                <button class="btn btn-primary" type="submit">Пошук</button>
+            </form>
+
+            {% if books %}
+                <h4 class="mb-4">Результати для автора з ID: <span class="text-info">{{ author_id }}</span></h4>
+
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    {% for book_name, book in books.items() %}
+                    <div class="col">
+                        <div class="card h-100 shadow-sm">
+                            <img src="/static/book.jpg" class="card-img-top" alt="Book Image">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ book_name }}</h5>
+                                <p class="card-text"><strong>Автор:</strong> {{ book.author }}</p>
+                                <p class="card-text"><strong>Сторінок:</strong> {{ book.pages }}</p>
+                                <p class="card-text"><strong>Категорія:</strong> {{ book.category }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            {% elif author_id %}
+                <div class="alert alert-warning text-center mt-4" role="alert">
+                    Книг автора з ID <strong>{{ author_id }}</strong> не знайдено.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

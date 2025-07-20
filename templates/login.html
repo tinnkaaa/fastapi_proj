@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Вхід{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center mb-4">Вхід</h2>
+            <form method="post" action="/login">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Імʼя користувача</label>
+                    <input type="text" class="form-control" name="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Пароль</label>
+                    <input type="password" class="form-control" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Увійти</button>
+            </form>
+            {% if error %}
+            <div class="alert alert-danger text-center mt-3">{{ error }}</div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
