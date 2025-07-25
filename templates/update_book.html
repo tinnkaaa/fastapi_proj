@@ -9,25 +9,38 @@
 
             <h1 class="mb-4 text-center">Оновити інформацію про книгу</h1>
 
-            <form method="post" action="/books/update" class="mb-4">
+            <form method="post" action="/books/update/{{ book.id }}">
                 <div class="mb-3">
-                    <label for="name" class="form-label">Назва книги (яку оновити)</label>
-                    <input type="text" name="name" id="name" class="form-control" required>
+                    <label for="name" class="form-label">Назва книги</label>
+                    <input type="text" name="name" id="name" class="form-control" value="{{ book.name }}" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="author" class="form-label">Новий автор</label>
-                    <input type="text" name="author" id="author" class="form-control" required>
+                    <label for="author_id" class="form-label">Автор</label>
+                    <select name="author_id" id="author_id" class="form-control" required>
+                        {% for author in authors %}
+                            <option value="{{ author.id }}" {% if author.id == book.author_id %}selected{% endif %}>
+                                {{ author.first_name }} {{ author.last_name }}
+                            </option>
+                        {% endfor %}
+                    </select>
                 </div>
 
                 <div class="mb-3">
                     <label for="pages" class="form-label">Кількість сторінок</label>
-                    <input type="number" name="pages" id="pages" class="form-control" required>
+                    <input type="number" name="pages" id="pages" class="form-control" value="{{ book.pages }}" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="category" class="form-label">Категорія</label>
-                    <input type="text" name="category" id="category" class="form-control" required>
+                    <label for="category_id" class="form-label">Категорія</label>
+                    <select name="category_id" id="category_id" class="form-control">
+                        <option value="">Без категорії</option>
+                        {% for category in categories %}
+                            <option value="{{ category.id }}" {% if category.id == book.category_id %}selected{% endif %}>
+                                {{ category.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
                 </div>
 
                 <button type="submit" class="btn btn-warning">Оновити</button>

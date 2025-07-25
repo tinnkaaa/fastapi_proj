@@ -6,12 +6,14 @@
         {% for book in books %}
         <div class="col">
             <div class="card h-100">
-                <img src="/static/book.jpg" class="card-img-top" alt="Book Image">
+                <h2 style="text-align: center; font-size: 24px; font-weight: bold;">
+                    {{ book.name }}
+                </h2>
                 <div class="card-body">
-                    <h5 class="card-title">{{ book_name }}</h5>
-                    <p class="card-text">Автор: {{ book.author }}</p>
+                    <p>Автор: {{ book.author.first_name }} {{ book.author.last_name }}</p>
                     <p class="card-text">Сторінок: {{ book.pages }}</p>
                     <p class="card-text">Категорія: {{ book.category }}</p>
+                    <a href="/books/update/{{ book.id }}" class="btn btn-warning">Оновити</a>
                 </div>
             </div>
         </div>

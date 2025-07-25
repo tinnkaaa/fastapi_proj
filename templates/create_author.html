@@ -8,6 +8,17 @@
         <div class="col-md-6">
             <h2 class="mb-4 text-center">Додати нового автора</h2>
 
+            {% if success %}
+                <div class="alert alert-success text-center" role="alert">
+                    {{ success }}
+                </div>
+            {% endif %}
+            {% if error %}
+                <div class="alert alert-danger text-center" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+
             <form method="post" action="/authors/create">
                 <div class="mb-3">
                     <label for="first_name" class="form-label">Ім'я</label>

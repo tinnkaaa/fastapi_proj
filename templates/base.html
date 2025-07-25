@@ -18,15 +18,26 @@
                         <a class="nav-link active" aria-current="page" href="/books/create">Додати книгу</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/books/by_author">Пошук за автором</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/books/delete">Видалити книгу</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/books/update">Оновити книгу</a>
+                        <a class="nav-link" href="/books">Оновити книгу</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/authors">Автори</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/authors/create">Додати автора</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/categories">Категорії</a>
                     </li>
                 </ul>
+
+                <form action="/logout" method="post" class="d-flex ms-3">
+                    <button type="submit" class="btn btn-outline-danger">Вийти</button>
+                </form>
+                
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
                     <button class="btn btn-outline-success" type="submit">Search</button>
