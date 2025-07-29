@@ -119,10 +119,8 @@ def create_book_post(
         models.Category.owner_id == current_user.id
     ).first()
     if not category_obj:
-        context["error"] = "Категорія не знайдена"
-        context["categories"] = crud.get_categories_by_owner(db, owner_id=current_user.id)
-        context["authors"] = crud.get_authors_by_owner(db, owner_id=current_user.id)
-        return templates.TemplateResponse("create_books.html", context)
+        category_data = schemas.CategoryCreate(name=category)
+        category_obj = crud.create_category(db, category_data, owner_id=current_user.id)
 
     try:
         new_book = models.Book(

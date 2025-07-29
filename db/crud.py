@@ -44,7 +44,7 @@ def update_book(db: Session, book_id: int, updated_data: schemas.BookCreate):
     book.description = updated_data.description
     book.pages = updated_data.pages
     book.img = updated_data.img
-    book.category = updated_data.category_id
+    book.category_id = updated_data.category_id
     book.author_id = updated_data.author_id
 
     db.commit()

@@ -27,9 +27,6 @@ class Author(AuthorBase):
     class Config:
         from_attributes = True
 
-    class Config:
-        from_attributes = True
-
 class UserBase(BaseModel):
     username: str
     email: str

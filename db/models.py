@@ -39,7 +39,7 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String(20), unique=True, nullable=False)
     email = Column(String(20), unique=True, nullable=True)
-    password = Column(String(20), nullable=False)  
+    password = Column(String(128), nullable=False)  
     books = relationship("Book", back_populates="owner")   
     authors = relationship("Author", back_populates="owner")
     categories = relationship("Category", back_populates="owner")

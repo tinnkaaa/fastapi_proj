@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <p>Автор: {{ book.author.first_name }} {{ book.author.last_name }}</p>
                     <p class="card-text">Сторінок: {{ book.pages }}</p>
-                    <p class="card-text">Категорія: {{ book.category }}</p>
+                    <p class="card-text">Категорія: {{ book.category_rel.name if book.category_rel else "Немає" }}</p>
                     <a href="/books/update/{{ book.id }}" class="btn btn-warning">Оновити</a>
                 </div>
             </div>
